@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="PulseHub.API/PulseHub.API.csproj" />
+  <Project Path="PulseHub.Application/PulseHub.Application.csproj" />
+  <Project Path="PulseHub.Domain/PulseHub.Domain.csproj" />
+  <Project Path="PulseHub.Infrastructure/PulseHub.Infrastructure.csproj" />
+</Solution>
