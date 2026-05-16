@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using PulseHub.Domain.Entities;
+
 namespace PulseHub.Infrastructure.Data.Configurations;
 
 public class ProductConfiguration : IEntityTypeConfiguration<Product>
@@ -8,6 +9,7 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
     public void Configure(EntityTypeBuilder<Product> builder)
     {
         builder.ToTable("Products");
+
         builder.HasKey(p => p.Id);
 
         // ── Propriedades ──────────────────────────────────────
@@ -44,9 +46,6 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
         builder.Property(p => p.CreatedAt)
             .IsRequired();
 
-        // HasStock é calculado — não persistir
-        builder.Ignore(p => p.HasStock);
-
         // ── Relacionamentos ───────────────────────────────────
 
         builder.HasOne(p => p.Category)
@@ -68,7 +67,6 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
         builder.HasIndex(p => p.ViewCount)
             .HasDatabaseName("IX_Products_ViewCount");
 
-        // Índice composto para a query mais comum: lista ativa por categoria
         builder.HasIndex(p => new { p.CategoryId, p.IsActive })
             .HasDatabaseName("IX_Products_CategoryId_IsActive");
     }
