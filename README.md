@@ -1,4 +1,3 @@
-# PulseHub
 # 🚀 PulseHub
 
 > Uma API backend robusta construída com **.NET 10** seguindo princípios de **Clean Architecture** e **CQRS**
